@@ -1,28 +1,28 @@
 import React from 'react'
 
-import loginImg from '../../assets/Login-image.svg'
+import LoginImg from '../../assets/Login-image.svg'
 import Logo from '../../assets/burger-Logo.svg'
 
-import { Container, LoginImage, ContainerItens, Label, Input, Button, SingInLink } from './styles'
+import { Container, ContainerItens, Label, Input, Button, SingInLink, LoginImage} from './styles'
 
 function Login() {
     return (
         <Container>
-            <LoginImage src={loginImg} alt="login-image">
+            <LoginImage src={LoginImg} alt="Login-Img">
                 <ContainerItens>
-               
                     <img src={Logo} alt="burger-Logo" />
+
                     <h1>Login</h1>
 
                     <Label>Email</Label>
                     <Input />
 
-                    <Label>Email</Label>
+                    <Label>Password</Label>
                     <Input />
 
-                    <Button>SingIn</Button>
+                    <Button>Sing In</Button>
 
-                    <SingInLink>Não possui conta? <a>SingUp</a></SingInLink>
+                    <SingInLink>Não possui conta? <button>Sing Up</button></SingInLink>
                 </ContainerItens>
             </LoginImage>
         </Container>
