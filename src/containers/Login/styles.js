@@ -12,17 +12,22 @@ export const Container = styled.div`
 `
 
 export const LoginImage = styled.img`
-height: 70%;
+height: 80%;
 `
 
 export const ContainerItens = styled.div`
     background: #373737;
     border-radius: 0px 10px 10px 0px;
-    height: 70%;
+    height: 80%;
     padding: 25px 75px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    form{
+        display: flex;
+        flex-direction: column;
+    }
 
     h1{
         font-size: 24px;
@@ -52,7 +57,7 @@ export const Input = styled.input`
     border-radius: 5px;
     background: #FFFFFF;
     box-shadow: 3px 3px 10px 0px #4A90E230;
-    border: none;
+    border: ${props => (props.error ? '2px solid #cc1717' : 'none')};
     padding-left: 10px;
 `
 
@@ -65,17 +70,24 @@ export const Button = styled.button`
     cursor: pointer;
     margin-top: 30px;
     margin-bottom: 20px;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 500px;
+    line-height: 19px;
+    text-align: center;
+    color: #eeeeee;
 
-    &:hover{
+    &: hover{
         opacity: 0.8;
     }
 
-    &:active{
-        opacity: 0.8;
+    &: active{
+        opacity: 0.6;
     }
+
 `
 
-export const SingInLink = styled.button`
+export const SingInLink = styled.a`
     background: transparent;
     color: #ffffff;
     border: none;
@@ -84,7 +96,7 @@ export const SingInLink = styled.button`
     font-weight: 300px;
     line-height: 16px;
 
-    button{
+    a{
         background: transparent;
         color: #ffffff;
         border: none;
@@ -100,3 +112,12 @@ export const SingInLink = styled.button`
         }
     }
 `
+
+export const ErrorMessage = styled.p`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #cc1717;
+        margin-top: 4px;
+        `
