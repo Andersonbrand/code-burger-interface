@@ -3,11 +3,12 @@ import { useForm } from "react-hook-form"
 import * as Yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 
+import Button from '../../components/Button'
 import api from '../../services/api'
 import LoginImg from '../../assets/Login-image.svg'
 import Logo from '../../assets/burger-Logo.svg'
 
-import { Container, ContainerItens, Label, Input, Button, SingInLink, LoginImage, ErrorMessage } from './styles'
+import { Container, ContainerItens, Label, Input, SingInLink, LoginImage, ErrorMessage } from './styles'
 
 function Login() {
 
@@ -49,7 +50,7 @@ function Login() {
                     <Input type="password" {...register("password")} error={errors.email?.message} />
                     <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
-                    <Button type="submit">Sing In</Button>
+                    <Button type="submit" style={{ marginTop: 60, marginBottom: 30 }} >Sing In</Button>
                 </form>
                 <SingInLink>Não possui conta? <a href="https://google.com">Sing Up</a></SingInLink>
             </ContainerItens>
