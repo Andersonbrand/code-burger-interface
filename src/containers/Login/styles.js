@@ -32,7 +32,7 @@ export const ContainerItens = styled.div`
     h1{
         font-size: 24px;
         font-weight: 500;
-        line-height: 28px;
+        line-height: 60px;
         color: #FFFFFF;
         text-align: center;
         margin-top: 10px;

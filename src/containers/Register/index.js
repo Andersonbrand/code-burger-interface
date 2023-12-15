@@ -9,15 +9,15 @@ import LogoRegister from '../../assets/logo-register.svg'
 import Logo from '../../assets/burger-Logo.svg'
 
 import { Container, ContainerItens, Label, Input, SingInLink, RegisterImage, ErrorMessage } from './styles'
+import { toast } from 'react-toastify'
 
 function Register() {
-
     const schema = Yup.object().shape({
         name: Yup.string().required("O seu nome é obrigatório"),
         email: Yup.string().email("Digite um e-mail válido").required("O e-mail é obrigatório"),
         password: Yup.string().required("A senha é obrigatória").min(6, "A senha deve ter no minímo 6 digitos"),
         confirmPassword: Yup.string().required("A confirmaçao de senha é obrigatória")
-        .oneOf([Yup.ref('password')], 'As senhas devem ser iguais')
+            .oneOf([Yup.ref('password')], 'As senhas devem ser iguais')
     })
 
     const {
@@ -29,14 +29,24 @@ function Register() {
     })
 
     const onSubmit = async clientData => {
-        const response = await api.post('users', {
-            name: clientData.name,
-            email: clientData.email,
-            password: clientData.password
-        })
+        try {
+            const { status } = await api.post('users', {
+                name: clientData.name,
+                email: clientData.email,
+                password: clientData.password
+            }, { validateStatus: () => true })
 
-        console.log(response)
-    }
+            if (status == 201 || status == 200) {
+                toast.success('Cadastro criado com sucesso!')
+            } else if (status == 409) {
+                toast.error('E-mail já cadastrado. Faça login para continuar')
+            } else {
+                throw new Error()
+            }
+            } catch (err) {
+                toast.error('Falha no servidor. Tente novamente')
+            }
+        }
 
     return (
         <Container>
