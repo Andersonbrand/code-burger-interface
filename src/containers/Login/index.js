@@ -14,7 +14,7 @@ import Logo from '../../assets/burger-Logo.svg'
 import { Container, ContainerItens, Label, Input, SingInLink, LoginImage, ErrorMessage } from './styles'
 
 function Login() {
-    const { putUserData, userData } = useUser()
+    const { putUserData } = useUser()
 
     const schema = Yup.object().shape({
         email: Yup.string().email("Digite um e-mail válido").required("O e-mail é obrigatório"),
@@ -42,7 +42,6 @@ function Login() {
             }
         )
         putUserData(data)
-        console.log(userData)
     }
 
 
