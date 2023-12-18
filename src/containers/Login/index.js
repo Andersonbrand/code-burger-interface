@@ -1,9 +1,11 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify'
+
 import * as Yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 
-import { toast } from 'react-toastify'
+import { useUser } from '../../hooks/UserContext'
 import Button from '../../components/Button'
 import api from '../../services/api'
 import LoginImg from '../../assets/Login-image.svg'
@@ -12,6 +14,7 @@ import Logo from '../../assets/burger-Logo.svg'
 import { Container, ContainerItens, Label, Input, SingInLink, LoginImage, ErrorMessage } from './styles'
 
 function Login() {
+    const { putUserData, userData } = useUser()
 
     const schema = Yup.object().shape({
         email: Yup.string().email("Digite um e-mail válido").required("O e-mail é obrigatório"),
@@ -27,7 +30,7 @@ function Login() {
     })
 
     const onSubmit = async clientData => {
-        const response = await toast.promise(
+        const { data } = await toast.promise(
             api.post('sessions', {
                 email: clientData.email,
                 password: clientData.password
@@ -38,8 +41,8 @@ function Login() {
                 error: 'Algo de errado aconteceu, verifique suas informações!'
             }
         )
-
-        console.log(response)
+        putUserData(data)
+        console.log(userData)
     }
 
 
