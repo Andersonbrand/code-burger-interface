@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import * as Yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
+import { Link } from 'react-router-dom'
 
 import Button from '../../components/Button'
 import api from '../../services/api'
@@ -43,10 +44,10 @@ function Register() {
             } else {
                 throw new Error()
             }
-            } catch (err) {
-                toast.error('Falha no servidor. Tente novamente')
-            }
+        } catch (err) {
+            toast.error('Falha no servidor. Tente novamente')
         }
+    }
 
     return (
         <Container>
@@ -74,7 +75,7 @@ function Register() {
 
                     <Button type="submit" style={{ marginTop: 25, marginBottom: 25 }} >Sing Up</Button>
                 </form>
-                <SingInLink>Já possui conta? <a href="https://google.com">Sing In</a></SingInLink>
+                <SingInLink>Já possui conta?{' '} <Link style={{ color: 'white' }} to="/login">Sing In</Link></SingInLink>
             </ContainerItens>
         </Container>
     )

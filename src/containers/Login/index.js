@@ -64,7 +64,7 @@ function Login() {
 
                     <Button type="submit" style={{ marginTop: 60, marginBottom: 30 }} >Sing In</Button>
                 </form>
-                <SingInLink>Não possui conta? <a href="https://google.com">Sing Up</a></SingInLink>
+                <SingInLink>Não possui conta?{' '} <Link style={{ color: 'white' }} to="/cadastro">Sing Up</Link></SingInLink>
             </ContainerItens>
         </Container>
     )
