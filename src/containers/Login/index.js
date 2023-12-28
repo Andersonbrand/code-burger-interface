@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import * as Yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -15,6 +15,7 @@ import Logo from '../../assets/burger-Logo.svg'
 import { Container, ContainerItens, Label, Input, SingInLink, LoginImage, ErrorMessage } from './styles'
 
 function Login() {
+    const history = useHistory()
     const { putUserData } = useUser()
 
     const schema = Yup.object().shape({
@@ -43,6 +44,10 @@ function Login() {
             }
         )
         putUserData(data)
+
+        setTimeout(() => {
+            history.push('/')
+        }, 1000)
     }
 
 
