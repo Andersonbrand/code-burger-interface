@@ -23,13 +23,12 @@ function CategoryCarousel() {
             <CategoryImg src={Category} alt='logo da categoria' />
 
             <Carousel itemsToShow={4} style={{ width: '90%' }}>
-                {
-                    categories && categories.map(category => (
+                {categories && 
+                    categories.map(category => (
                         <div key={category.id}>
                             <img src={category.url} alt='foto da categoria' />
                             <button>{category.name}</button>
                         </div>
-
                     ))
                 }
             </Carousel>
