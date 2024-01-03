@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 
 import Category from '../../assets/CATEGORIAS.png'
-import { Container, CategoryImg } from './styles'
+import { Container, CategoryImg, ContainerItens, Image, Button } from './styles'
 import api from '../../services/api'
 
 function CategoryCarousel() {
@@ -25,10 +25,10 @@ function CategoryCarousel() {
             <Carousel itemsToShow={4} style={{ width: '90%' }}>
                 {categories && 
                     categories.map(category => (
-                        <div key={category.id}>
-                            <img src={category.url} alt='foto da categoria' />
-                            <button>{category.name}</button>
-                        </div>
+                        <ContainerItens key={category.id}>
+                            <Image src={category.url} alt='foto da categoria' />
+                            <Button>{category.name}</Button>
+                        </ContainerItens>
                     ))
                 }
             </Carousel>
