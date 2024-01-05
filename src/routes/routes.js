@@ -5,7 +5,7 @@ import Login from '../containers/Login'
 import Register from '../containers/Register'
 import Home from '../containers/Home'
 import Products from '../containers/Products'
-import PrivateRoutes from '../containers/Home'
+import PrivateRoutes from '../routes/private-routes'
 
 function Routes() {
 
