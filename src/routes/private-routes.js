@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 function PrivateRoute({ component, ...rest }) {
     const user = localStorage.getItem('codeburger:userData')
-
+    
     if (!user) {
         return <Redirect to='/login' />
     }
