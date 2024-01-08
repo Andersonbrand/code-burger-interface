@@ -1,10 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Login from '../containers/Login'
-import Register from '../containers/Register'
-import Home from '../containers/Home'
-import Products from '../containers/Products'
+import { Home, Login, Products, Register } from '../containers'
 import PrivateRoutes from '../routes/private-routes'
 
 function Routes() {

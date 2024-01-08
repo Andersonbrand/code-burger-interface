@@ -5,7 +5,7 @@ import Category from '../../assets/CATEGORIAS.png'
 import { Container, CategoryImg, ContainerItens, Image, Button } from './styles'
 import api from '../../services/api'
 
-function CategoryCarousel() {
+export function CategoryCarousel() {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -35,5 +35,3 @@ function CategoryCarousel() {
         </Container>
     )
 }
-
-export default CategoryCarousel

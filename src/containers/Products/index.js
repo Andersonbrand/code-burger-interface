@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react'
 import api from '../../services/api'
 
 import ProductsLogo from '../../assets/products-logo.svg'
-import { Container, ProductsImg, CategoryButton, CategoriesMenu } from './styles'
+import { CardsProducts } from '../../components'
+import formatCurrency from '../../utils/formatCurrency'
+import { Container, ProductsImg, CategoryButton, CategoriesMenu, ProductsContainer } from './styles'
 
-function Products() {
+export function Products() {
     const [categories, setCategories] = useState([])
+    const [products, setProducts] = useState([])
+    const [filteredProducts, setFilteredProducts] = useState([])
     const [activeCategory, setActiveCategory] = useState(0)
+
+    console.log(activeCategory)
 
     useEffect(() => {
         async function loadCategories() {
@@ -17,8 +23,31 @@ function Products() {
             setCategories(newCategories)
         }
 
+        async function loadProducts() {
+            const { data: allProducts } = await api.get('products')
+
+            const newProducts = allProducts.map(product => {
+                return { ...product, formatedPrice: formatCurrency(product.price) }
+            })
+
+            setProducts(newProducts)
+        }
+
+        loadProducts()
         loadCategories()
     }, [])
+
+    useEffect(() => {
+        if (activeCategory === 0) {
+            setFilteredProducts(products)
+        } else {
+
+            const newFilteredProducts = products.filter(product =>
+                product.category_id === activeCategory)
+
+            setFilteredProducts(newFilteredProducts)
+        }
+    }, [activeCategory, products])
 
     return (
         <Container>
@@ -27,18 +56,22 @@ function Products() {
                 {categories &&
                     categories.map(category => (
                         <CategoryButton
-                            type="button"
+                            type='button'
                             key={category.id}
                             isActiveCategory={activeCategory === category.id}
-                            onclick={() => {
+                            onClick={() => {
                                 setActiveCategory(category.id)
-                            }}>
+                            }}
+                        >
                             {category.name}
                         </CategoryButton>
                     ))}
             </CategoriesMenu>
+            <ProductsContainer>
+                {filteredProducts && filteredProducts.map(product => (
+                    <CardsProducts key={product.id} product={product} />
+                ))}
+            </ProductsContainer>
         </Container>
     )
 }
-
-export default Products
