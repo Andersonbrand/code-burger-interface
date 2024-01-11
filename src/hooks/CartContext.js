@@ -4,6 +4,11 @@ import PropTypes from 'prop-types'
 const CartContext = createContext({})
 
 export const CartProvider = ({ children }) => {
+
+    const updateLocalStorage = async (products) => {
+        await localStorage.setItem('codeburger:cartInfo', JSON.stringify(products))
+    }
+
     const [cartProducts, setCartProducts] = useState([])
 
     const putProductInCart = async product => {
@@ -22,7 +27,7 @@ export const CartProvider = ({ children }) => {
             setCartProducts(newCartProducts)
         }
 
-        await localStorage.setItem('codeburger:cartInfo', JSON.stringify(newCartProducts))
+        await updateLocalStorage(newCartProducts)
     }
 
     const deleteProducts = async productId => {
@@ -30,7 +35,7 @@ export const CartProvider = ({ children }) => {
 
         setCartProducts(newCart)
 
-        await localStorage.setItem('codeburger:cartInfo', JSON.stringify(newCart))
+        await updateLocalStorage(newCart)
     }
 
     const increaseProducts = async productId => {
@@ -41,7 +46,7 @@ export const CartProvider = ({ children }) => {
 
         setCartProducts(newCart)
 
-        await localStorage.setItem('codeburger:cartInfo', JSON.stringify(newCart))
+        await updateLocalStorage(newCart)
     }
 
 
@@ -56,7 +61,7 @@ export const CartProvider = ({ children }) => {
 
             setCartProducts(newCart)
 
-            await localStorage.setItem('codeburger:cartInfo', JSON.stringify(newCart))
+            await updateLocalStorage(newCart)
         } else {
             deleteProducts(productId)
         }

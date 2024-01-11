@@ -35,6 +35,7 @@ export const Body = styled.div`
     p{
         font-size: 16px;
         color: #000000;
+        max-width: 120px 
     }
 
     .quantity-container{
