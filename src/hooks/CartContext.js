@@ -51,7 +51,7 @@ export const CartProvider = ({ children }) => {
 
 
     const decreaseProducts = async productId => {
-        const cartIdex = cartProducts.findIndex(pd => pd.id === productId)
+        const cartIdex = cartProducts.findIndex(product => product.id === productId)
 
         if (cartProducts[cartIdex].quantity > 1) {
             const newCart = cartProducts.map(product => {
