@@ -13,10 +13,15 @@ export const UserProvider = ({ children }) => {
     }
 
     useEffect(() => {
+
+        const logout = async () => {
+            await localStorage.removeItem('codeburger:userData')
+        }
+
         const loadUserData = async () => {
             const clientInfo = await localStorage.getItem('codeburger:userData')
 
-            if(clientInfo){
+            if (clientInfo) {
                 setUserData(JSON.parse(clientInfo))
             }
         }
@@ -25,7 +30,7 @@ export const UserProvider = ({ children }) => {
     }, [])
 
     return (
-        <UserContext.Provider value={{ putUserData, userData }}>{children}</UserContext.Provider>
+        <UserContext.Provider value={{ putUserData, userData, logout }}>{children}</UserContext.Provider>
     )
 }
 
