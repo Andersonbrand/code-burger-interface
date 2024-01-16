@@ -12,12 +12,11 @@ export const UserProvider = ({ children }) => {
         await localStorage.setItem('codeburger:userData', JSON.stringify(userInfo))
     }
 
+    const logout = async () => {
+        await localStorage.removeItem('codeburger:userData')
+    }
+
     useEffect(() => {
-
-        const logout = async () => {
-            await localStorage.removeItem('codeburger:userData')
-        }
-
         const loadUserData = async () => {
             const clientInfo = await localStorage.getItem('codeburger:userData')
 

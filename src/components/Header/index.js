@@ -23,23 +23,17 @@ export function Header() {
     return (
         <Container>
             <ContainerLeft>
-                <PageLink onClick={() => push('/')} isActive={pathname === '/'}>
-                    Home
-                </PageLink>
-
-                <PageLink onClick={() => push('/produtos')} isActive={pathname.includes('/produtos')}>
-                    Ver Produtos
-                </PageLink>
+                <PageLink onClick={() => push('/')} isActive={pathname === '/'}>Home</PageLink>
+                <PageLink onClick={() => push('/produtos')} isActive={pathname.includes('/produtos')}>Ver Produtos</PageLink>
             </ContainerLeft>
 
             <ContainerRight>
-                <PageLink onClick={() => push('/carrinho')}>
-                    <img src={Cart} alt='icone-carrinho' />
-                </PageLink>
+
+                <PageLink onClick={() => push('/carrinho')}><img src={Cart} alt='icone-carrinho' /></PageLink>
+
                 <Line> </Line>
-                <PageLink>
-                    <img src={Person} alt='icone-user' />
-                </PageLink>
+
+                <PageLink><img src={Person} alt='icone-user' /></PageLink>
 
                 <ContainerText>
                     <p>
@@ -49,6 +43,7 @@ export function Header() {
                         Sair
                     </PageLinkExit>
                 </ContainerText>
+
             </ContainerRight>
         </Container>
     )
