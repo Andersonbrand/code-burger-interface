@@ -7,7 +7,7 @@ import * as Yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { useUser } from '../../hooks/UserContext'
-import {Button} from '../../components'
+import { Button } from '../../components'
 import api from '../../services/api'
 import LoginImg from '../../assets/Login-image.svg'
 import Logo from '../../assets/burger-Logo.svg'
@@ -46,7 +46,11 @@ export function Login() {
         putUserData(data)
 
         setTimeout(() => {
-            history.push('/')
+            if (data.admin) {
+                history.push('/pedidos')
+            } else {
+                history.push('/')
+            }
         }, 1000)
     }
 
