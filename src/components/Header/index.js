@@ -1,18 +1,24 @@
 import React from 'react'
-import { useUser } from '../../hooks/UserContext'
-
-import Person from '../../assets/Vector - user.png'
-import Cart from '../../assets/Vector - cart.png'
 import { useHistory } from 'react-router-dom'
 
+import Cart from '../../assets/Vector - cart.png'
+import Person from '../../assets/Vector - user.png'
+import { useUser } from '../../hooks/UserContext'
 import {
-    Container, ContainerLeft, ContainerRight,
-    ContainerText, PageLink, Line, PageLinkExit
+    Container,
+    ContainerLeft,
+    PageLink,
+    ContainerRight,
+    ContainerText,
+    Line,
+    PageLinkExit
 } from './styles'
 
 export function Header() {
-    const { logout, userData } = useUser
-    const { push, location: { pathname }
+    const { logout, userData } = useUser()
+    const {
+        push,
+        location: { pathname }
     } = useHistory()
 
     const logoutUser = () => {
@@ -20,29 +26,33 @@ export function Header() {
         push('/login')
     }
 
-    console.log(userData)
     return (
         <Container>
             <ContainerLeft>
-                <PageLink onClick={() => push('/')} isActive={pathname === '/'}>Home</PageLink>
-                <PageLink onClick={() => push('/produtos')} isActive={pathname.includes('/produtos')}>Ver Produtos</PageLink>
+                <PageLink onClick={() => push('/')} isActive={pathname === '/'}>
+                    Home
+                </PageLink>
+                <PageLink
+                    onClick={() => push('/produtos')}
+                    isActive={pathname.includes('produtos')}
+                >
+                    Ver Produtos
+                </PageLink>
             </ContainerLeft>
 
             <ContainerRight>
-
-                <PageLink onClick={() => push('/carrinho')}><img src={Cart} alt='icone-carrinho' /></PageLink>
-
-                <Line> </Line>
-
-                <PageLink><img src={Person} alt='icone-user' /></PageLink>
+                <PageLink onClick={() => push('/carrinho')}>
+                    <img src={Cart} alt="carrinho" />
+                </PageLink>
+                <Line></Line>
+                <PageLink>
+                    <img src={Person} alt="logo-pessoa" />
+                </PageLink>
 
                 <ContainerText>
-                    <p>Olá, {userData}</p>
-                    <PageLinkExit onClick={logoutUser}>
-                        Sair
-                    </PageLinkExit>
+                    <p>Olá, {userData.name}</p>
+                    <PageLinkExit onClick={logoutUser}>Sair</PageLinkExit>
                 </ContainerText>
-
             </ContainerRight>
         </Container>
     )

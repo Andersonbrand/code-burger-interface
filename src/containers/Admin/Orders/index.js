@@ -1,12 +1,18 @@
 import React from 'react'
 
 import { Container } from './styles'
-import Orders from './Orders'
 
-export function Admin() {
+function Orders() {
+
+
+
+
+
     return (
         <Container>
-            <Orders />
+            <h1>Pedidos</h1>
         </Container>
     )
 }
+
+export default Orders
