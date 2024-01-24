@@ -45,6 +45,17 @@ function Orders() {
         setRows(newRows)
     }, [filteredOrders])
 
+    useEffect(() => {
+        if (activeStatus === 1) {
+            setFilteredOrders(orders)
+        } else {
+            const statusIndex = status.findIndex(sts => sts.id === activeStatus)
+            const newFilteredOrders = orders.filter(order => order.status === status[statusIndex].value)
+
+            setFilteredOrders(newFilteredOrders)
+        }
+    }, [orders])
+
     function handleStatus(status) {
         if (status.id === 1) {
             setFilteredOrders(orders)
@@ -58,9 +69,16 @@ function Orders() {
     return (
         <Container>
             <Menu>
-                {status && status.map(status => <LinkMenu key={status.id} onClick={() => handleStatus(status)}
-                    isActiveStatus={activeStatus === status.id}
-                >{status.label}</LinkMenu>)}
+                {status &&
+                    status.map(status => (
+                        <LinkMenu
+                            key={status.id}
+                            onClick={() => handleStatus(status)}
+                            isActiveStatus={activeStatus === status.id}
+                        >
+                            {status.label}
+                        </LinkMenu>
+                    ))}
             </Menu>
             <TableContainer component={Paper}>
                 <Table aria-label="collapsible table">
@@ -75,7 +93,7 @@ function Orders() {
                     </TableHead>
                     <TableBody>
                         {rows.map((row) => (
-                            <Row key={row.orderId} row={row} />
+                            <Row key={row.orderId} row={row} orders={orders} setOrders={setOrders} />
                         ))}
                     </TableBody>
                 </Table>
