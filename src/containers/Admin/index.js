@@ -1,19 +1,29 @@
 import React from 'react'
 
+import PropTypes from 'prop-types'
+
 import { Container, ContainerItems } from './styles'
 import { SideMenuAdmin } from '../../components'
 import ListProducts from './ListProducts'
 import Orders from './Orders'
+import paths from '../../constants/paths'
 
-export function Admin() {
+export function Admin({ match: { path } }) {
+
 
     return (
         <Container>
             <SideMenuAdmin />
             <ContainerItems>
-                {/*<Orders />*/}
+                {path === paths.Order && <Orders />}
+                {path === paths.Products && <ListProducts />}
             </ContainerItems>
-            <ListProducts />
         </Container>
     )
+}
+
+Admin.propTypes = {
+    match: PropTypes.shape({
+        path: PropTypes.string
+    })
 }
