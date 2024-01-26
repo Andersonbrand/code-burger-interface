@@ -17,14 +17,14 @@ export const ItemContainer = styled.div`
     height: 60px;
     display: flex;
     align-items: center;
-    background: #565656;
+    background: ${props => (props.isActive ? '#565656' : 'none')};
     border-radius: 2px;
     margin: 8px;
     padding-left: 20px;
 
     .icon{
-        color: #ffffff;
-    }
+    color: #ffffff;
+}
 `
 
 export const ListLink = styled(Link)`
@@ -34,5 +34,5 @@ export const ListLink = styled(Link)`
     line-height: 19px;
     color: #ffffff;
     text-decoration: none;
-    margin-left: 8px;
+     margin-left: 8px;
 `
