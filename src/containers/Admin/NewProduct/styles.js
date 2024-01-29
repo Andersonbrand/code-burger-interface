@@ -12,6 +12,9 @@ export const Container = styled.div`
         background: #565656;
         border-radius: 10px;
         padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
     }
 `
 
@@ -29,8 +32,8 @@ export const Input = styled.input`
     border-radius: 8px;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
     border: none;
-    margin-bottom: 25px;
     min-width: 280px;
+    padding-left: 10px;
 `
 
 export const ButtonStyles = styled(Button)`
@@ -45,7 +48,6 @@ export const LabelUplod = styled.label`
    border: 1px dashed #ffffff;
     border-radius: 5px;
     padding: 10px;
-    margin-bottom: 25px;
     gap: 10px;
 
     input{
