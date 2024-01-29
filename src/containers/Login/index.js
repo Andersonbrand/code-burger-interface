@@ -7,12 +7,12 @@ import * as Yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { useUser } from '../../hooks/UserContext'
-import { Button } from '../../components'
+import { Button, ErrorMessage } from '../../components'
 import api from '../../services/api'
 import LoginImg from '../../assets/Login-image.svg'
 import Logo from '../../assets/burger-Logo.svg'
 
-import { Container, ContainerItens, Label, Input, SingInLink, LoginImage, ErrorMessage } from './styles'
+import { Container, ContainerItens, Label, Input, SingInLink, LoginImage } from './styles'
 
 export function Login() {
     const history = useHistory()

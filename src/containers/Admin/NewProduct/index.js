@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
+import * as Yup from 'yup'
 
 import api from '../../../services/api'
 import ReactSelect from 'react-select'
@@ -11,13 +12,20 @@ function NewProduct() {
     const [fileName, setFileName] = useState(null)
     const [categories, setCategories] = useState([])
 
+    const schema = Yup.object().shape({
+        name: Yup.string().required('Digite o nome do produto'),
+        price: Yup.string().required('Digite o preço do produto'),
+        category: Yup.object().required('Escolha uma categoria'),
+        //file: Yup.string().required('Digite o nome do produto')
+    })
+
     const { register, handleSubmit, control } = useForm()
     const onSubmit = data => console.log(data)
 
     useEffect(() => {
         async function loadCategories() {
             const { data } = await api.get('categories')
-            console.log(data)
+
             setCategories(data)
         }
         loadCategories()
@@ -25,7 +33,7 @@ function NewProduct() {
 
     return (
         <Container>
-            <form noValidate>
+            <form noValidate onSubmit={handleSubmit(onSubmit)}>
                 <Label>Nome</Label>
                 <Input type='text' {...register('name')} />
 

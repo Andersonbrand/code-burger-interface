@@ -4,12 +4,12 @@ import * as Yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { Link } from 'react-router-dom'
 
-import {Button} from '../../components'
+import { Button, ErrorMessage } from '../../components'
 import api from '../../services/api'
 import LogoRegister from '../../assets/logo-register.svg'
 import Logo from '../../assets/burger-Logo.svg'
 
-import { Container, ContainerItens, Label, Input, SingInLink, RegisterImage, ErrorMessage } from './styles'
+import { Container, ContainerItens, Label, Input, SingInLink, RegisterImage } from './styles'
 import { toast } from 'react-toastify'
 
 export function Register() {
