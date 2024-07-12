@@ -11,9 +11,7 @@
         "plugin:react-hooks/recommended",
         "plugin:prettier/recommended"
     ],
-    "IgnorePatterns": [
-        "dist"
-    ],
+   
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
